@@ -1,29 +1,24 @@
-import { useState } from 'react'
-import './App.css'
+import "./App.css";  
+import ProductCard from "./ProductCard";
 
 function App() {
-    const [count, setCount] = useState(0);
-
-
-
   return (
-    <div>
-      <h1>Simple Counter - ReactJS</h1>
-      <button onClick={()=>{
-        setCount(count-1);
-      }}
-      >-</button>
-      <span >{count}</span>
-        <button onClick={()=> {
-            setCount(count+1);
-        }}
-        >+</button>
+    <div className="products-container">
+      <h1>Products</h1>
 
-        <h2>
-            Another Counter:{count}
-        </h2>
-
-        <p>Total payment:{count * 5} </p>
+      <ProductCard
+        title="Smartphone"
+        description="A high-end smartphone"
+        price={699.99}
+        imageUrl="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=60"
+      />
+      
+      <ProductCard
+        title="Laptop"
+        description="Powerful laptop for work and gaming"
+        price={1299.99}
+        imageUrl="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=500&q=60"
+      />
     </div>
   );
 }
