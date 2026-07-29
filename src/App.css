@@ -1,5 +1,22 @@
-.products-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.products-container {
+  min-height: 100vh;
+  padding: 24px;
+  background: linear-gradient(135deg, #f5f7ff, #e6ecff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.page-title {
+  margin: 0;
+  color: #22304a;
+  font-size: 2rem;
+}
+
+.products-grid {
+  width: min(100%, 980px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
 }
