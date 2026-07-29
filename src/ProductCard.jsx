@@ -9,15 +9,25 @@ function ProductCard({ title, description, price, imageUrl }) {
     setTotalPrice(quantity * price);
   }, [quantity, price]);
 
-  useEffect(() => {
-    if (quantity < 1) {
+  const handleDecrease = () => {
+    if (quantity <= 1) {
       window.alert("Quantity cannot be less than 1. Minimum quantity is 1.");
       setQuantity(1);
-    } else if (quantity > 9) {
+      return;
+    }
+
+    setQuantity((prev) => prev - 1);
+  };
+
+  const handleIncrease = () => {
+    if (quantity >= 9) {
       window.alert("Quantity cannot be greater than 9. Maximum quantity is 9.");
       setQuantity(9);
+      return;
     }
-  }, [quantity]);
+
+    setQuantity((prev) => prev + 1);
+  };
 
   return (
     <div className="product-card">
@@ -27,13 +37,9 @@ function ProductCard({ title, description, price, imageUrl }) {
       <p className="product-price">Price: ${price}</p>
 
       <div className="quantity-controls">
-        <button onClick={() => setQuantity((prev) => prev - 1)} disabled={quantity <= 1}>
-          -
-        </button>
+        <button onClick={handleDecrease}>-</button>
         <span className="quantity-value">{quantity}</span>
-        <button onClick={() => setQuantity((prev) => prev + 1)} disabled={quantity >= 9}>
-          +
-        </button>
+        <button onClick={handleIncrease}>+</button>
       </div>
 
       <p className="quantity-label">Quantity: {quantity}</p>
